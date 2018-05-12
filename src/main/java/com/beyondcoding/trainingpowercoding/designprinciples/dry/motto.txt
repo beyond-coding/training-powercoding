@@ -1,0 +1,3 @@
+The DRY principle
+
+Don't Repeat Yourself.

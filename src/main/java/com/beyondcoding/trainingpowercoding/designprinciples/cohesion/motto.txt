@@ -1,0 +1,3 @@
+The Cohesion principle
+
+High cohesion and loose coupling.

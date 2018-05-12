@@ -1,0 +1,3 @@
+The Dependency Inversion Principle (DIP)
+
+Depend on Abstractions. Do not depend on concreteness.

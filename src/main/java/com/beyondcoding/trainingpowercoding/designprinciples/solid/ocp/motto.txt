@@ -1,0 +1,3 @@
+The Open/Closed Principle (OCP)
+
+Our code should be open for extension and closed for modification.

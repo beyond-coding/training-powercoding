@@ -1,0 +1,3 @@
+The Interface Segregation Principle (ISP)
+
+Make fine grained interfaces that are client-specific.

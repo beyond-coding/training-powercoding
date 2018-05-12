@@ -1,0 +1,3 @@
+The SLAP principle
+
+Single Level of Abstraction Principle.
