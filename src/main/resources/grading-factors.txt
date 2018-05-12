@@ -1,0 +1,3 @@
+These are the main concepts that are considered when grading code:
+
+Clean Code | Abstraction | Design Principles | Design Patterns | Creativity
