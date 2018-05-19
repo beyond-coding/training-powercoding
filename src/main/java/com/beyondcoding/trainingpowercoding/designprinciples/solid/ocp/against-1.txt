@@ -1,0 +1,17 @@
+public class LengthRule implements ValidationRule {
+
+    public void validate(String creditCardNumber) throws CreditCardException {
+        Integer creditCardNumberLength = creditCardNumber.length();
+        if (!creditCardNumberLength.equals(AmericanExpress.AMEX_15)
+                && !creditCardNumberLength.equals(Visa.VISA_13)
+                && !creditCardNumberLength.equals(Visa.VISA_16)
+                && !creditCardNumberLength.equals(MasterCard.MASTERCARD_16)) {
+            throw new CreditCardException("Credit card number length not valid");
+        }
+    }
+}
+
+
+------------------------------------------------------------------
+
+// What happens if we add a new credit card?

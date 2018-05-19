@@ -1,0 +1,23 @@
+public class CreditCardFactory {
+
+    public CreditCard getCreditCard(String creditCardNumber) throws CreditCardException{
+
+        if(isAMEX(creditCardNumber)){
+            return new AmericanExpress(creditCardNumber);
+        }else if(isMasterCard(creditCardNumber)){
+            return new MasterCard(creditCardNumber);
+        }else if(isVisa(creditCardNumber)){
+            return new Visa(creditCardNumber);
+        }else{
+            throw new CreditCardException("The credit card number is not neither American Express nor MasterCard nor Visa");
+        }
+
+    }
+
+    (...)
+}
+------------------------------------------------------------------
+
+// What happens if we add a new credit card?
+
+// Wouldn't it be better if we had CreditCard Builders and iterate through them?

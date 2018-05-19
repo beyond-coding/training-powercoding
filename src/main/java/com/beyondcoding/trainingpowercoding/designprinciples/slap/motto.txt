@@ -1,3 +1,5 @@
 The SLAP principle
 
 Single Level of Abstraction Principle.
+
+Supported by: Compose Method Pattern

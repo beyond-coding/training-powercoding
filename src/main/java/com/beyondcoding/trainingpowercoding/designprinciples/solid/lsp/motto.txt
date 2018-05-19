@@ -1,3 +1,5 @@
 The Liskov's Substitution Principle (LSP)
 
 Methods that use references to the base classes must be able to use the objects of the derived classes without knowing it.
+
+Inheritance should be used only for substitutability.

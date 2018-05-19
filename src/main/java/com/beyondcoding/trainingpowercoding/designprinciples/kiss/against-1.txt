@@ -1,0 +1,24 @@
+public class CardLengthValidator implements CardValidator {
+    @Override
+    public boolean validate(Card card) {
+        final Optional<CardCharacteristics> optional = CardsConfiguration.getCardCharacteristics(card.getType());
+
+        if (!optional.isPresent()) return Boolean.FALSE;
+
+        final List<Integer> lengths = optional.get().getLengths();
+
+        if (lengths.isEmpty()) return Boolean.TRUE;
+
+        return lengths.stream()
+                .map(length -> (int) length == card.getCardNumber().length())
+                .filter(checkResult -> Boolean.TRUE.equals(checkResult))
+                .findAny().isPresent();
+    }
+
+}
+
+------------------------------------------------------------------
+
+// Perhaps the logic behind it?
+int length = card.getCardNumber().length();
+return lengths.contains(length);

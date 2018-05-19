@@ -1,0 +1,14 @@
+namespace RockPaperAndScissors.Shapes
+{
+    public class Scissor : Shape
+    {
+
+        protected sealed override List<Type> ShapesBeated { get; set; }
+
+        public Scissor()
+        {
+            ShapesBeated = new List<Type>() { typeof(Paper), typeof(Lizzard) };
+        }
+
+    }
+}

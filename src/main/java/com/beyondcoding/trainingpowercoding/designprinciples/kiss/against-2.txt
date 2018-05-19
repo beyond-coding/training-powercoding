@@ -1,0 +1,32 @@
+@Service
+public class GameService {
+	private static final Random random = new Random();
+
+	private static GameType DEFAULT_GAME_TYPE = GameType.STANDARD;
+	private static GameService INSTANCE = null;
+
+	/*
+	 * For use outside of Spring as a library
+	 */
+	public static GameService getInstance() {
+		if (INSTANCE == null) {
+			synchronized (random) {
+				if (INSTANCE == null) {
+					INSTANCE = new GameService();
+				}
+			}
+		}
+		return INSTANCE;
+	}
+
+(...)
+
+------------------------------------------------------------------
+
+// Perhaps what we were looking to accomplish?
+// -without lazy initialization or concurrency
+
+private static GameService INSTANCE = new GameService();
+public static GameService getInstance() {
+    return INSTANCE;
+}

@@ -1,0 +1,16 @@
+public class GraphicGameController extends GameController {
+
+	static {
+		NAME = "graphic";
+	}
+
+	@Override
+	public void play() throws Throwable {
+		// TODO Create graphical application to use the service.
+
+	}
+}
+
+------------------------------------------------------------------
+
+// Let's wait for the next milestone maybe?

@@ -1,0 +1,95 @@
+public class RockPaperScissors {
+
+
+
+	enum Move {
+		ROCK, PAPER, SCISSORS;
+
+		/**
+		 * Compares this move with another move to determine tie, win, or loss.
+		 *
+		 */
+		public int compareMoves(Move otherMove) {
+
+			if (this == otherMove) return 0;
+
+			switch (this) {
+			case ROCK:
+				return (otherMove == SCISSORS ? 1 : 2);
+			case PAPER:
+				return (otherMove == ROCK ? 1 : 2);
+			case SCISSORS:
+				return (otherMove == PAPER ? 1 : 2);
+			}
+			return 0;
+
+		}
+
+		private static final List<Move> VALUES = Collections.unmodifiableList(Arrays.asList(values()));
+		private static final int SIZE = VALUES.size();
+		private static final Random RANDOM = new Random();
+
+		/**
+		 *  Gets a random enum value
+		 * @return
+		 */
+		public static Move randomMove() {
+			return VALUES.get(RANDOM.nextInt(SIZE));
+		}
+	}
+
+
+    public RockPaperScissors() {
+
+    }
+
+    /**
+     * Compare
+     * @param user
+     */
+    public void startGame(User user) {
+
+
+        Move userMove = user.getMove();
+        Move computerMove = Move.randomMove();
+        System.out.println("User played " + userMove + ".");
+        System.out.println("Computer played " + computerMove + ".");
+
+        int compareMoves = userMove.compareMoves(computerMove);
+        switch (compareMoves) {
+        case 0:
+            System.out.println("Tie ");
+            break;
+        case 1:
+            System.out.println(userMove + " wins " + computerMove + ". User won ");
+            break;
+        case 2:
+            System.out.println(computerMove + " wins " + userMove + ". Computer won ");
+            break;
+        }
+
+
+    }
+
+
+
+    public static void main(String[] args) {
+
+    	User user = new User();
+
+        RockPaperScissors game = new RockPaperScissors();
+        game.startGame(user);
+
+        while (user.playAgain()) {
+            System.out.println("Starting the game ");
+            game.startGame(user);
+        }
+
+    }
+
+}
+
+------------------------------------------------------------------
+
+// Which class changes if anything of this game changes as well?
+// Modifying the moves will also impact the User class because it is tightly coupled
