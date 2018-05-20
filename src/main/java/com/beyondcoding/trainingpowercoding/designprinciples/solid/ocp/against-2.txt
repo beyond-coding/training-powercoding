@@ -1,4 +1,33 @@
+namespace RockScissorsPaperGame
+{
+    class LegendaryGame : Game
+    {
+        protected override ISet<Shape> GetValidShapes()
+        {
+            var paper = new Shape("paper");
+            var scissors = new Shape("scissors");
+            var rock = new Shape("rock");
+            var spock = new Shape("spock");
+            var lizard = new Shape("lizard");
 
+            paper.AddLoser(rock);
+            paper.AddLoser(spock);
+            scissors.AddLoser(paper);
+            scissors.AddLoser(lizard);
+            rock.AddLoser(paper);
+            rock.AddLoser(lizard);
+            spock.AddLoser(scissors);
+            spock.AddLoser(rock);
+            lizard.AddLoser(spock);
+            lizard.AddLoser(paper);
+
+            return new HashSet<Shape>() { paper, scissors, rock };
+        }
+    }
+}
 
 ------------------------------------------------------------------
 
+// Adding or removing shapes or changing their behaviour will impact this class and we will
+// need to modify it
+// So this implementation is not open for extension and closed to modification

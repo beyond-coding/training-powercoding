@@ -1,3 +1,6 @@
 The DRY principle
 
 Don't Repeat Yourself.
+
+Every piece of knowledge in a system should have
+a single unambiguous authoritative representation.

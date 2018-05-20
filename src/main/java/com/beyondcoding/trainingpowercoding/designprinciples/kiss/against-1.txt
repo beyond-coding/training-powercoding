@@ -1,4 +1,5 @@
 public class CardLengthValidator implements CardValidator {
+
     @Override
     public boolean validate(Card card) {
         final Optional<CardCharacteristics> optional = CardsConfiguration.getCardCharacteristics(card.getType());
@@ -20,5 +21,6 @@ public class CardLengthValidator implements CardValidator {
 ------------------------------------------------------------------
 
 // Perhaps the logic behind it?
+
 int length = card.getCardNumber().length();
 return lengths.contains(length);

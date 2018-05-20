@@ -1,4 +1,14 @@
-
+private static RockPaperScissorGame GenerateRockPaperScissorGame()
+{
+    string player1Name = AskForPlayerName(1);
+    string player2Name = AskForPlayerName(2);
+    RockPaperScissorGame game = RockPaperScissorGame.Builder()
+        .Player1Name(player1Name)
+        .Player2Name(player2Name)
+        .Build();
+    return game;
+}
 
 ------------------------------------------------------------------
 
+// Show Rock Scissors Paper solution of Judge

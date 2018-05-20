@@ -1,4 +1,17 @@
+namespace RockPaperAndScissors.Shapes
+{
+    public abstract class Shape
+    {
 
+        protected abstract List<Type> ShapesBeated { get; set; }
+
+        public bool Beat(Shape otherShape)
+        {
+            return ShapesBeated.Contains(otherShape.GetType());
+        }
+
+    }
+}
 
 ------------------------------------------------------------------
 

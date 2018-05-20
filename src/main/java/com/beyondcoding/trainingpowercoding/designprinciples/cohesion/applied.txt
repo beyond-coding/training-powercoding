@@ -1,4 +1,25 @@
+public class CardService {
+    List<CardValidator> validators;
 
+    public CardService() {
+        validators = new ArrayList<>();
+        validators.add(new CardLengthValidator());
+        validators.add(new CardBeginningValidator());
+        validators.add(new CardNumberValidator());
+    }
+
+    public boolean isCorrect(Card card) {
+        return validators.stream()
+                .map(validator -> validator.validate(card))
+                .reduce(Boolean::logicalAnd)
+                .get();
+    }
+
+}
 
 ------------------------------------------------------------------
 
+// There is no other class to place those validators than here
+// In addition to that, every validator belongs together with the others in the same place
+
+// Alike things stay together, unlike things stay apart

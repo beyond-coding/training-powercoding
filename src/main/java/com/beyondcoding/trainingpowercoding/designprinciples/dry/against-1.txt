@@ -1,4 +1,36 @@
+public class CardLengthValidator implements CardValidator {
+    @Override
+    public boolean validate(Card card) {
+        final Optional<CardCharacteristics> optional = CardsConfiguration.getCardCharacteristics(card.getType());
 
+        if (!optional.isPresent()) return Boolean.FALSE;
+
+        final List<Integer> lengths = optional.get().getLengths();
+
+        if (lengths.isEmpty()) return Boolean.TRUE;
+
+        (...)
+    }
+
+}
+
+public class CardBeginningValidator implements CardValidator {
+    @Override
+    public boolean validate(Card card) {
+        final Optional<CardCharacteristics> optional = CardsConfiguration.getCardCharacteristics(card.getType());
+
+        if (!optional.isPresent()) return Boolean.FALSE;
+
+        final List<Integer> beginnings = optional.get().getBeginnings();
+
+        if (beginnings.isEmpty()) return Boolean.TRUE;
+
+       (...)
+    }
+
+}
 
 ------------------------------------------------------------------
 
+// What about using composition or abstraction to avoid repetition of logic?
+// What happens if we decide that empty characteristics means FALSE?

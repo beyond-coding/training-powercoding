@@ -1,4 +1,25 @@
+namespace RockScissorsPaperGame
+{
+    class ClassicGame : Game
+    {
 
+        protected override ISet<Shape> GetValidShapes()
+        {
+            var paper = new Shape("paper");
+            var scissors = new Shape("scissors");
+            var rock = new Shape("rock");
+
+            paper.AddLoser(rock);
+            scissors.AddLoser(paper);
+            rock.AddLoser(scissors);
+
+            return new HashSet<Shape>() {paper, scissors, rock};
+
+        }
+    }
+}
 
 ------------------------------------------------------------------
 
+// The game logic is in the parent class and therefore inheritance was not used for substitutability.
+// Composition solves the problem without generating a tight coupling

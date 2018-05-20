@@ -1,4 +1,19 @@
+do
+{
+    Console.WriteLine($"Player 1 : {player1.Name}");
+    Console.WriteLine($"Player 2 : {player2.Name}");
 
+    var roundResult = game.PlayNewRound();
+
+    Console.WriteLine($"Result: {(roundResult.IsDraw ? "Draw" : $"{roundResult.WinnerPlayer.Name} Wins!")}");
+
+    Console.Write("Play again? (Y): ");
+    userReponse = Console.ReadLine();
+    Console.WriteLine("=====================================================");
+} while (userReponse.Equals("Y", StringComparison.InvariantCultureIgnoreCase));
 
 ------------------------------------------------------------------
 
+// Some other solutions provided a way to remember how many rounds were won by a single player
+// Where do we see here any Score Accumulator class or any Result Board class?
+// Nowhere, because it was not asked for in the exercise (yet).

@@ -1,3 +1,6 @@
 The Cohesion principle
 
 High cohesion and loose coupling.
+
+Your classes should reflect the informatics world
+and not the real world.

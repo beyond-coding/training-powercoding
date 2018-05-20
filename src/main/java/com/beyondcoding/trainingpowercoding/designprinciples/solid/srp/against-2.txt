@@ -1,4 +1,37 @@
+@Component
+public class TextGameController extends GameController {
+
+	(...)
+
+	void play(BufferedReader input, PrintStream output) throws Throwable {
+	    (...)
+        shapePlayer1 = readShape(input, output, gameType);
+        (...)
+	}
+
+	(...)
+
+	Shape readShape(BufferedReader input, PrintStream output, GameType gameType) throws IOException {
+		Shape shape = null;
+		while (shape == null) {
+			try {
+				showOptions(output, gameType);
+				String line = input.readLine();
+				int shapeInt = findIntFromText(line, gameType.getNumShapes());
+				shape = Shape.fromOrdinal(shapeInt);
+			} catch (NumberFormatException e) {
+			}
+		}
+		return shape;
+	}
+
+	(...)
+
+}
 
 
 ------------------------------------------------------------------
 
+// The Game Controller class takes care of the logic of the game (turns, sequence, etc)
+// But it also takes care of selecting shapes from only human players
+// This class has then more than one reason to change

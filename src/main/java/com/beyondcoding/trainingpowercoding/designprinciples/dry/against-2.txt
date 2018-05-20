@@ -1,4 +1,66 @@
+namespace Challenge.Shapes
+{
+    public class Lizard : IShape
+    {
+        public string Name => "Lizard";
 
+        public DecisionResult Versus(IShape other)
+        {
+            var result = new DecisionResult();
+            switch (other)
+            {
+                case Paper _:
+                case Spock _:
+                    result.WinnerShape = this;
+                    break;
+                case Rock _:
+                case Scissors _:
+                    result.WinnerShape = other;
+                    break;
+                case Lizard _:
+                    result.IsDraw = true;
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException();
+            }
+
+            return result;
+        }
+    }
+}
+
+namespace Challenge.Shapes
+{
+    public class Paper : IShape
+    {
+        public string Name => "Paper";
+
+        public DecisionResult Versus(IShape other)
+        {
+            var result = new DecisionResult();
+            switch (other)
+            {
+                case Rock _:
+                case Spock _:
+                    result.WinnerShape = this;
+                    break;
+                case Lizard _:
+                case Scissors _:
+                    result.WinnerShape = other;
+                    break;
+                case Paper _:
+                    result.IsDraw = true;
+                    break;
+                default:
+                    throw new InvalidEnumArgumentException();
+            }
+
+            return result;
+        }
+    }
+}
 
 ------------------------------------------------------------------
 
+// What about using composition or abstraction to avoid repetition of logic?
+// What if we decide that the behaviour of Versus is to return a Draw by default instead of throwing an exception?

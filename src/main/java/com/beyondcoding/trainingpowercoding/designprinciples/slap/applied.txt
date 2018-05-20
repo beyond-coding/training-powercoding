@@ -1,4 +1,20 @@
+static void Main()
+{
+    CapturePlayerData();
+    CaptureGameData();
+    SetupGame();
 
+    while (_game.PlayRound())
+    {
+        PrintScore(false);
+        Console.WriteLine("Let's play again");
+    }
+    Console.WriteLine("Enough of this");
+    PrintScore(true);
+    Console.WriteLine("Press any key to close");
+    Console.ReadKey(true);
+
+}
 
 ------------------------------------------------------------------
 

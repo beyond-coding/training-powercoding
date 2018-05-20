@@ -1,7 +1,6 @@
 public class RockPaperScissors {
 
 
-
 	enum Move {
 		ROCK, PAPER, SCISSORS;
 

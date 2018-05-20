@@ -1,4 +1,10 @@
-
+private static bool PlayRandomly()
+{
+    DisplayMessage("Do you want to play this round randomly? (Y/N)");
+    return AskForYesNoQuestion();
+}
 
 ------------------------------------------------------------------
 
+// This could perhaps have something to do with the unit tests, but still
+// Let's wait for the next milestone maybe?

@@ -1,4 +1,36 @@
+public void PickShape(ISet<Shape> validShapes)
+{
+    Console.WriteLine("{0}, enter your shape from: {1}", Name, string.Join(",",validShapes.Select( x => x.Name.ToString())));
+    var ok = false;
+    do
+    {
+        var result = Console.ReadLine();
+        if (validShapes.Any(x => x.Name.Equals(result)))
+        {
+            ok = true;
+            Shape = validShapes.First(x => x.Name.Equals(result));
+        }
+        else
+        {
+            Console.WriteLine("Wrong shape");
+        }
+    } while (!ok);
 
+}
 
 ------------------------------------------------------------------
 
+// Could it be we meant something like this?
+
+var shape = getShape();
+while (thereIsNo(shape))
+{
+    shape = getShape();
+}
+
+// of course being the code of getShape() the following
+
+var result = readResult();
+return shapeFrom(result);
+
+(and so on...)

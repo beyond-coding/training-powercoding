@@ -1,4 +1,28 @@
+public DecisionResult PlayNewRound()
+{
+    var shape1 = Player1.GetShape(_shapeFactory);
+    OnShapePlayed(Player1, shape1);
 
+    var shape2 = Player2.GetShape(_shapeFactory);
+    OnShapePlayed(Player2, shape2);
+
+    DecisionResult decisionResult;
+
+    if (_useDecisionMachine)
+    {
+        decisionResult = _decisionMachine.GetResult(shape1, shape2);
+    }
+    else
+    {
+        decisionResult = shape1.Versus(shape2);
+    }
+    decisionResult.WinnerPlayer = decisionResult.WinnerShape == shape1 ? Player1 : Player2;
+    return decisionResult;
+}
 
 ------------------------------------------------------------------
 
+// decisionResult = shape1.Versus(shape2);
+// We apply the LSP principle on the shapes in the way that depending on their replacement
+// the solution to the logic will be one or another.
+// Abstraction was used indeed to promote substitutability

@@ -1,17 +1,39 @@
-public class LengthRule implements ValidationRule {
+public abstract class Game
+{
+    (...)
+    private IPlayer _player1;
+    private IPlayer _player2;
+    (...)
 
-    public void validate(String creditCardNumber) throws CreditCardException {
-        Integer creditCardNumberLength = creditCardNumber.length();
-        if (!creditCardNumberLength.equals(AmericanExpress.AMEX_15)
-                && !creditCardNumberLength.equals(Visa.VISA_13)
-                && !creditCardNumberLength.equals(Visa.VISA_16)
-                && !creditCardNumberLength.equals(MasterCard.MASTERCARD_16)) {
-            throw new CreditCardException("Credit card number length not valid");
-        }
+    public void Setup(string p1Name, EPlayerType p1Type, string p2Name, EPlayerType p2Type)
+    {
+        _validShapes = GetValidShapes();
+        _player1 = CreateNewPlayer(p1Name, p1Type);
+        _player2 = CreateNewPlayer(p2Name, p2Type);
+        _score = new Dictionary<IPlayer, int> {{_player1, 0}, {_player2, 0}};
     }
-}
 
+    (...)
+
+    private IPlayer CreateNewPlayer(string name, EPlayerType type)
+    {
+        switch (type)
+        {
+            case EPlayerType.Human:
+                return new HumanPlayer(name);
+            case EPlayerType.Computer:
+                return new ComputerPlayer(name);
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type));
+        }
+
+    }
+
+    (...)
+
+}
 
 ------------------------------------------------------------------
 
-// What happens if we add a new credit card?
+// The Game class should take care of the logic of the game and not about the creation of the players
+// In fact, it would be so much better for the Game class if it didn't know what kind of players they are
